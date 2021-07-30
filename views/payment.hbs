@@ -1,0 +1,33 @@
+
+
+     {{!-- <form action="https://shrouded-inlet-06102.herokuapp.com/payment/rz_payment/{{user_id}}" method="POST"> --}}
+     {{!-- <form action="http://localhost:5000/payment/rz_payment/{{user_id}}" method="POST"> --}}
+     <form action="https://quickloans.today/api/payment/rz_payment/{{user_id}}" method="POST">
+<script
+    src="https://checkout.razorpay.com/v1/checkout.js"
+    {{!-- data-key="rzp_test_Re66ey7eFpmkCq" // Enter the Key ID generated from the Dashboard --}}
+    data-key="rzp_live_IaTT7YqJty0txN" // Enter the Key ID generated from the Dashboard
+    data-amount="{{amount}}" // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise or INR 500.
+    data-currency="INR"
+    data-order_id="{{id}}"
+    //This is a sample Order ID. Create an Order using Orders API. (https://razorpay.com/docs/payment-gateway/orders/integration/#step-1-create-an-order)
+    data-buttontext="Pay"
+    data-name="Quick Loan"
+    data-description="Best Loan Platform"
+    data-image="https://quickloans.today/assets/img/logo/quickLogo.png"
+    data-prefill.name="Quick Loan"
+    {{!-- data-prefill.email=""
+    data-prefill.contact="" --}}
+    data-theme.color="#8888e3"
+></script>
+
+{{!-- <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_GK2ccpAa1q6zp2"> </script> </form> --}}
+<input type="hidden" custom="Hidden Element" name="hidden">
+</form> 
+
+<script>
+    const button = document.querySelector('.razorpay-payment-button');
+    setTimeout(() => {
+        button.click();
+    }, 2000)
+</script>

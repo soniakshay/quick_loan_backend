@@ -48,36 +48,36 @@ const start = async() => {
     })
         console.log('Mongo Connected !');
 let httpServer;
-// try {
-//   const privateKey = fs.readFileSync('/etc/letsencrypt/live/quickloans.today/privkey.pem', 'utf8');
-//   const certificate = fs.readFileSync('/etc/letsencrypt/live/quickloans.today/cert.pem', 'utf8');
-//   const ca = fs.readFileSync('/etc/letsencrypt/live/quickloans.today/chain.pem', 'utf8');
-//   const credentials = {
-//     key: privateKey,
-//     cert: certificate,
-//     ca: ca
-//   };
-//   httpServer = https.createServer(credentials, app);
-//   httpServer.listen(5001, () => {
-//     console.log('%s App is running at https://localhost:%d in %s mode', 5001);
-//   });
-// } catch (e) {
-//     console.log(`Cannot run HTTPS ${5001}`, e);
-//   httpServer = http.createServer(app);
-//   httpServer.listen(5000, async () => {
-//     console.log(e, 'HTTP Server running on port 5000');
-//     // runScript()
-//
-//   });
-//
-// }
+try {
+  const privateKey = fs.readFileSync('/etc/letsencrypt/live/quickloans.today/privkey.pem', 'utf8');
+  const certificate = fs.readFileSync('/etc/letsencrypt/live/quickloans.today/cert.pem', 'utf8');
+  const ca = fs.readFileSync('/etc/letsencrypt/live/quickloans.today/chain.pem', 'utf8');
+  const credentials = {
+    key: privateKey,
+    cert: certificate,
+    ca: ca
+  };
+  httpServer = https.createServer(credentials, app);
+  httpServer.listen(5001, () => {
+    console.log('%s App is running at https://localhost:%d in %s mode', 5001);
+  });
+} catch (e) {
+    console.log(`Cannot run HTTPS ${5001}`, e);
+  httpServer = http.createServer(app);
+  httpServer.listen(5000, async () => {
+    console.log(e, 'HTTP Server running on port 5000');
+    // runScript()
 
-        httpServer = http.createServer(app);
-        httpServer.listen(5000, async () => {
-            console.log( 'HTTP Server running on port 5000');
-            // runScript()
+  });
 
-        });
+}
+
+//         httpServer = http.createServer(app);
+//         httpServer.listen(5000, async () => {
+//             console.log( 'HTTP Server running on port 5000');
+//             // runScript()
+
+//         });
 for(const f of folders) {
     fs.mkdirSync(`${__dirname}${f}`, {
       recursive: true

@@ -21,6 +21,7 @@ const sendServerOtp = async(message, phone) => {
     // const url =
     //     'http://fastsms.fastsmsindia.com/api/sendhttp.php?authkey=36855AaIxKbYnyv5fe1d661P30&mobiles='+phone+ '&message=' + message +'&sender=QUICLN&route=6&country=91&DLT_TE_ID=1207162495401159900';
     const url = 'http://fastsms.fastsmsindia.com/api/sendhttp.php?authkey=36855AaIxKbYnyv5fe1d661P30&mobiles=8000623262&message='+ message +'&sender=QUICLN&route=6&country=91&DLT_TE_ID=1207162495401159900';
+    console.log(url);
     try {
     const { data } = await axios.get(`${url}`);
     console.log(data, 'this is the otp response', phone);
